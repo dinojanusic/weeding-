@@ -219,6 +219,20 @@ p{margin:0 0 1em}
 @keyframes pulseSoft{0%,100%{opacity:.85}50%{opacity:1}}
 .is-opening .open-btn,.is-opening .stage-kicker{opacity:0;transform:translateY(10px);pointer-events:none;animation:none}
 
+/* --- gumbi ispod kuverte (dijele isto mjesto da se ništa ne pomiče) --- */
+.stage-actions{display:grid;justify-items:center}
+.stage-actions > *{grid-area:1/1}
+.enter-btn{
+  background:none;border:1px solid rgba(246,239,226,.34);border-radius:999px;
+  color:var(--cream);font-family:var(--font-sans);
+  font-size:clamp(10px,2.4vw,12px);letter-spacing:.3em;text-transform:uppercase;
+  padding:13px 28px;cursor:pointer;white-space:nowrap;
+  opacity:0;transform:translateY(8px);pointer-events:none;
+  transition:opacity .7s var(--ease-soft), transform .7s var(--ease-out), color .35s ease, border-color .35s ease;
+}
+.enter-btn:hover{color:var(--gold-soft);border-color:var(--gold)}
+.envelope-stage.is-revealed .enter-btn{opacity:1;transform:none;pointer-events:auto}
+
 /* --- prijelaz na stranicu --- */
 .stage-sweep{
   position:absolute;inset:0;background:var(--forest-900);

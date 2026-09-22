@@ -1,5 +1,5 @@
 /* =========================================================
-   Dino & Karla — 19.06.2026. — Bajkovita šuma
+   Dino & Karla — 19.06.2027. — Bajkovita šuma
    ========================================================= */
 (function () {
   'use strict';
@@ -99,9 +99,33 @@
   var stage    = $('#stage');
   var envelope = $('#envelope');
   var openBtn  = $('#openBtn');
+  var enterBtn = $('#enterBtn');
   var sweep    = $('#stageSweep');
   var site     = $('#site');
   var opened   = false;
+  var entered  = false;
+
+  // koliko traje sama animacija otvaranja i koliko otvorena kuverta ostaje na ekranu
+  var OPEN_MS = 1900;   // pečat pukne, preklop se otvori, pozivnica izroni
+  var HOLD_MS = 6000;   // pozivnica se čita u miru prije prijelaza na stranicu
+  var holdTimer = null;
+
+  function enterSite() {
+    if (entered) return;
+    entered = true;
+    clearTimeout(holdTimer);
+    if (enterBtn) { enterBtn.setAttribute('tabindex', '-1'); enterBtn.blur(); }
+
+    sweep.classList.add('is-on');
+    setTimeout(function () {
+      stage.classList.add('is-gone');
+      stage.classList.remove('is-revealed');
+      document.body.classList.remove('is-locked');
+      site.classList.add('is-live');
+      startHeroLetters();
+      window.scrollTo(0, 0);
+    }, reduced ? 100 : 650);
+  }
 
   function openEnvelope() {
     if (opened) return;
@@ -111,19 +135,22 @@
     envelope.classList.add('is-cracking');
     envelope.setAttribute('aria-expanded', 'true');
 
-    // 1) pečat puca  ->  2) preklop se otvara  ->  3) pisamce izlazi
+    // 1) pečat puca  ->  2) preklop se otvara  ->  3) pozivnica izlazi
     setTimeout(function () { envelope.classList.add('is-open'); }, reduced ? 0 : 420);
 
-    // 4) prijelaz u web-stranicu
-    var revealDelay = reduced ? 300 : 2500;
-    setTimeout(function () { sweep.classList.add('is-on'); }, revealDelay);
+    if (reduced) { enterSite(); return; }
+
+    // 4) pozivnica ostaje otvorena, uz gumb za raniji ulazak
     setTimeout(function () {
-      stage.classList.add('is-gone');
-      document.body.classList.remove('is-locked');
-      site.classList.add('is-live');
-      startHeroLetters();
-      window.scrollTo(0, 0);
-    }, revealDelay + (reduced ? 100 : 650));
+      stage.classList.add('is-revealed');
+      if (enterBtn) {
+        enterBtn.removeAttribute('aria-hidden');
+        enterBtn.setAttribute('tabindex', '0');
+      }
+    }, OPEN_MS);
+
+    // 5) nakon zadržavanja, prijelaz u web-stranicu
+    holdTimer = setTimeout(enterSite, OPEN_MS + HOLD_MS);
   }
 
   if (envelope) {
@@ -133,6 +160,13 @@
     });
   }
   if (openBtn) openBtn.addEventListener('click', openEnvelope);
+  if (enterBtn) enterBtn.addEventListener('click', enterSite);
+
+  // tipka Esc ili Enter preskače čekanje kad je pozivnica već vani
+  document.addEventListener('keydown', function (e) {
+    if (!opened || entered || !stage.classList.contains('is-revealed')) return;
+    if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); enterSite(); }
+  });
 
   Fireflies($('#fireflies-intro'), 42, { alpha: 0.8 });
 
@@ -153,9 +187,9 @@
   function startHeroLetters() { /* animacija kreće preko .site.is-live */ }
 
   /* ---------------------------------------------------------
-     4. ODBROJAVANJE do 19.06.2026. u 16:00 (CEST)
+     4. ODBROJAVANJE do 19.06.2027. u 16:00 (CEST)
      --------------------------------------------------------- */
-  var target = new Date('2026-06-19T16:00:00+02:00').getTime();
+  var target = new Date('2027-06-19T16:00:00+02:00').getTime();
   var cd = {
     days:  $('#cdDays'),
     hours: $('#cdHours'),
@@ -439,10 +473,10 @@
         'PRODID:-//Dino i Karla//Vjencanje//HR',
         'CALSCALE:GREGORIAN',
         'BEGIN:VEVENT',
-        'UID:dino-karla-2026-06-19@vjencanje',
-        'DTSTAMP:20260101T000000Z',
-        'DTSTART:20260619T140000Z',
-        'DTEND:20260620T020000Z',
+        'UID:dino-karla-2027-06-19@vjencanje',
+        'DTSTAMP:20270101T000000Z',
+        'DTSTART:20270619T140000Z',
+        'DTEND:20270620T020000Z',
         'SUMMARY:Vjencanje — Dino i Karla',
         'LOCATION:Bajkovita suma',
         'DESCRIPTION:Ceremonija u 16:00, slavlje od 17:00. Veselimo se!',
@@ -454,7 +488,7 @@
       var url = URL.createObjectURL(blob);
       var a = document.createElement('a');
       a.href = url;
-      a.download = 'Dino-i-Karla-19-06-2026.ics';
+      a.download = 'Dino-i-Karla-19-06-2027.ics';
       document.body.appendChild(a);
       a.click();
       a.remove();
