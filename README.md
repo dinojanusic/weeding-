@@ -14,11 +14,10 @@ otvorite `index.html` i sve radi.
 2. **Hero** — parallax šuma u četiri sloja, izmaglica, zvijezde, krijesnice na canvasu i imena
    koja se animiraju slovo po slovo.
 3. **Odbrojavanje** do 19. 06. 2027. u 16:00 (uživo, sa smjenom znamenki).
-4. **Naša priča** — vremenska crta koja se otkriva pri skrolanju.
-5. **Raspored dana**, **citat**, **lokacija** (ilustracija šumske čistine, poveznica na karte,
-   gumb *Dodaj u kalendar* koji generira `.ics` datoteku).
-6. **Galerija**, **informacije + česta pitanja** (akordeon).
-7. **RSVP obrazac** s provjerom unosa, voštanim pečatom kao potvrdom i laticama/konfetima.
+4. **Raspored dana** — šest kartica s vremenima, od dolaska gostiju do torte i vatrometa.
+5. **Citat** mladenaca.
+6. **Lokacija** — ilustracija šumske čistine, ključni podaci, poveznica na karte i gumb
+   *Dodaj u kalendar* koji generira `.ics` datoteku.
 
 Sve se animacije gase kad korisnik u sustavu ima uključeno *prefers-reduced-motion*.
 
@@ -27,8 +26,7 @@ Sve se animacije gase kad korisnik u sustavu ima uključeno *prefers-reduced-mot
 ```
 index.html              — cijeli sadržaj stranice
 assets/css/style.css    — dizajn, animacije, responzivnost
-assets/js/main.js       — ovitak, krijesnice, odbrojavanje, RSVP, galerija…
-assets/img/             — ovdje idu vaše fotografije
+assets/js/main.js       — ovitak, krijesnice, odbrojavanje, latice, kalendar
 ```
 
 ## Pokretanje
@@ -45,39 +43,12 @@ Radi i dvoklikom na `index.html` (jedino se fontovi tada učitavaju s interneta)
 
 | Što | Gdje |
 | --- | --- |
-| **E-mail za RSVP** (sada `dino.karla.vjencanje@example.com`) | `assets/js/main.js`, potraga za `mailto:` |
 | Točna adresa lokacije za karte | `index.html`, poveznica *Otvori u kartama* |
 | Koliko otvorena kuverta stoji na ekranu | `assets/js/main.js`, `HOLD_MS` (i `OPEN_MS` = trajanje same animacije) |
 | Datum/vrijeme odbrojavanja | `assets/js/main.js`, `var target = new Date('2027-06-19T16:00:00+02:00')` |
 | Podaci u `.ics` datoteci | `assets/js/main.js`, odjeljak *Dodaj u kalendar* (vrijeme je u UTC-u) |
-| Tekstovi priče, rasporeda, čestih pitanja | `index.html` |
+| Tekstovi rasporeda i podaci o lokaciji | `index.html` |
 | Boje (šumska zelena, zlatna, vosak) | `assets/css/style.css`, `:root` varijable |
-
-### Fotografije
-
-U galeriji su zasad obojene pločice. Zamijenite ih ovako:
-
-```html
-<figure class="gal-item reveal-up g-tall">
-  <img class="gal-ph" src="assets/img/nasa-slika.jpg" alt="Dino i Karla" loading="lazy" />
-</figure>
-```
-
-Ista klasa `gal-ph` zadržava zaobljenje, okvir i zoom pri prelasku mišem
-(dodajte `object-fit:cover` ako slike nisu istog omjera).
-
-### Pravi RSVP (umjesto e-maila)
-
-Obrazac trenutačno otvara e-mail klijent s ispunjenom porukom. Ako želite da odgovori
-stižu u tablicu, zamijenite `window.location.href = mailto;` pozivom na servis, npr.:
-
-```js
-fetch('https://formspree.io/f/VAS_ID', {
-  method: 'POST',
-  headers: { 'Accept': 'application/json' },
-  body: new FormData(form)
-});
-```
 
 ## Objava
 

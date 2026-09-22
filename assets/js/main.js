@@ -231,7 +231,7 @@
   /* ---------------------------------------------------------
      5. OTKRIVANJE PRI SKROLANJU
      --------------------------------------------------------- */
-  var revealables = $$('.reveal-up, .reveal-side');
+  var revealables = $$('.reveal-up');
   if ('IntersectionObserver' in window && !reduced) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e, i) {
@@ -324,114 +324,23 @@
   }
 
   /* ---------------------------------------------------------
-     8. ČESTA PITANJA (akordeon)
-     --------------------------------------------------------- */
-  $$('.faq-q').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var item = btn.parentElement;
-      var panel = $('.faq-a', item);
-      var isOpen = item.classList.contains('is-open');
-
-      $$('.faq-item.is-open').forEach(function (other) {
-        if (other === item) return;
-        other.classList.remove('is-open');
-        $('.faq-a', other).style.maxHeight = null;
-        $('.faq-q', other).setAttribute('aria-expanded', 'false');
-      });
-
-      item.classList.toggle('is-open', !isOpen);
-      btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-      panel.style.maxHeight = isOpen ? null : panel.scrollHeight + 'px';
-    });
-  });
-
-  /* ---------------------------------------------------------
-     9. RSVP OBRAZAC
-     --------------------------------------------------------- */
-  var form = $('#rsvpForm');
-  var done = $('#rsvpDone');
-  var doneMsg = $('#rsvpDoneMsg');
-
-  function markError(el, on) {
-    var box = el.closest('.field') || el.closest('.choice');
-    if (box) box.classList.toggle('has-error', on);
-  }
-
-  if (form) {
-    $$('#rsvpForm input, #rsvpForm textarea').forEach(function (el) {
-      el.addEventListener('input', function () { markError(el, false); });
-    });
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var ime = $('#ime'), email = $('#email');
-      var dolazak = form.querySelector('input[name="dolazak"]:checked');
-      var ok = true;
-
-      if (!ime.value.trim()) { markError(ime, true); ok = false; }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { markError(email, true); ok = false; }
-      if (!dolazak) { markError(form.querySelector('input[name="dolazak"]'), true); ok = false; }
-      if (!ok) {
-        var firstErr = $('.has-error');
-        if (firstErr) firstErr.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
-        return;
-      }
-
-      var dolazi = dolazak.value === 'Dolazim';
-      var body =
-        'Ime i prezime: ' + ime.value.trim() + '\n' +
-        'E-mail: ' + email.value.trim() + '\n' +
-        'Dolazak: ' + dolazak.value + '\n' +
-        'Broj osoba: ' + ($('#osobe').value || '1') + '\n' +
-        'Meni: ' + $('#menu').value + '\n' +
-        'Napomena: ' + ($('#poruka').value.trim() || '-') + '\n';
-
-      var mailto = 'mailto:dino.karla.vjencanje@example.com' +
-        '?subject=' + encodeURIComponent('RSVP — vjenčanje Dino & Karla (' + ime.value.trim() + ')') +
-        '&body=' + encodeURIComponent(body);
-
-      if (doneMsg) {
-        doneMsg.textContent = dolazi
-          ? 'Vaša potvrda je spremna. Vidimo se 19. lipnja u Bajkovitoj šumi!'
-          : 'Hvala što ste nam javili. Nedostajat ćete nam — nazdravit ćemo i u vaše ime.';
-      }
-      form.hidden = true;
-      done.hidden = false;
-      done.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
-      if (dolazi) confetti();
-
-      window.location.href = mailto;
-    });
-  }
-
-  var again = $('#rsvpAgain');
-  if (again) {
-    again.addEventListener('click', function () {
-      form.reset();
-      done.hidden = true;
-      form.hidden = false;
-      form.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
-    });
-  }
-
-  /* ---------------------------------------------------------
-     10. LATICE (nježne, stalne) + konfeti nakon potvrde
+     8. LATICE koje nježno padaju u pozadini
      --------------------------------------------------------- */
   var petalColors = ['#f6efe2', '#e9d8c3', '#d9b8a8', '#c9a227', '#9db39b'];
 
-  function spawnPetal(burst) {
+  function spawnPetal() {
     var p = document.createElement('div');
     p.className = 'petal';
     var size = 6 + Math.random() * 9;
     p.style.width = size + 'px';
-    p.style.height = size * (burst ? 0.5 : 0.8) + 'px';
+    p.style.height = size * 0.8 + 'px';
     p.style.background = petalColors[(Math.random() * petalColors.length) | 0];
     p.style.left = (6 + Math.random() * 88) + 'vw';
-    p.style.opacity = burst ? 0.9 : 0.4 + Math.random() * 0.3;
+    p.style.opacity = 0.4 + Math.random() * 0.3;
     document.body.appendChild(p);
 
-    var dur = burst ? 2600 + Math.random() * 1600 : 11000 + Math.random() * 9000;
-    var drift = (Math.random() - 0.5) * (burst ? Math.min(380, window.innerWidth * 0.5) : Math.min(220, window.innerWidth * 0.3));
+    var dur = 11000 + Math.random() * 9000;
+    var drift = (Math.random() - 0.5) * Math.min(220, window.innerWidth * 0.3);
     var spin = (Math.random() - 0.5) * 900;
 
     var anim = p.animate([
@@ -443,26 +352,20 @@
     anim.onfinish = function () { p.remove(); };
   }
 
-  function confetti() {
-    if (reduced) return;
-    for (var i = 0; i < 60; i++) setTimeout(function () { spawnPetal(true); }, i * 28);
-  }
-
   if (!reduced && typeof document.body.animate === 'function') {
     setInterval(function () {
       if (document.hidden || !site.classList.contains('is-live')) return;
-      spawnPetal(false);
+      spawnPetal();
     }, 1400);
   }
 
   /* ---------------------------------------------------------
-     11. KRIJESNICE NA HERO I RSVP SEKCIJI
+     9. KRIJESNICE NA HERO SEKCIJI
      --------------------------------------------------------- */
   Fireflies($('#fireflies-hero'), 55, { alpha: 0.7 });
-  Fireflies($('#fireflies-rsvp'), 28, { alpha: 0.5 });
 
   /* ---------------------------------------------------------
-     12. DODAJ U KALENDAR (.ics)
+     10. DODAJ U KALENDAR (.ics)
      --------------------------------------------------------- */
   var icsBtn = document.getElementById('icsBtn');
   if (icsBtn) {
@@ -497,7 +400,7 @@
   }
 
   /* ---------------------------------------------------------
-     13. GLATKO SKROLANJE uz odmak za navigaciju
+     11. GLATKO SKROLANJE uz odmak za navigaciju
      --------------------------------------------------------- */
   $$('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
