@@ -3,39 +3,106 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Dino &amp; Karla — 19.06.2027. — Bajkovita šuma</title>
-<meta name="description" content="Dino i Karla vjenčanje — 19. lipnja 2027., Bajkovita šuma. Pozivnica, odbrojavanje, raspored dana i lokacija." />
-<meta name="theme-color" content="#0d1a12" />
-<meta property="og:title" content="Dino &amp; Karla — 19.06.2027." />
-<meta property="og:description" content="Pozivamo vas u Bajkovitu šumu na dan našeg vjenčanja." />
+<title>Karla &amp; Dino — 18. 06. 2027.</title>
+<meta name="description" content="Karla i Dino vjenčanje — petak, 18. lipnja 2027. Ceremonija u Kapeli Gospe Snježne u Kuršancu, slavlje u Bajkovitoj šumi." />
+<meta name="theme-color" content="#faf7f0" />
+<meta property="og:title" content="Karla &amp; Dino — 18. 06. 2027." />
+<meta property="og:description" content="Pozivamo vas na dan našeg vjenčanja." />
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Pinyon+Script&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/style.css" />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤍</text></svg>" />
 </head>
 <body class="is-locked">
 
-<!-- ============ OVITAK / ENVELOPE OPENING ============ -->
-<div class="envelope-stage" id="stage">
-  <canvas class="fireflies" id="fireflies-intro" aria-hidden="true"></canvas>
+<!-- ======== zajedničke SVG definicije (pečat, ornament, ikone) ======== -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <defs>
+    <radialGradient id="waxGrad" cx="34%" cy="26%" r="82%">
+      <stop offset="0%" stop-color="#a8b588" />
+      <stop offset="48%" stop-color="#8c9c6e" />
+      <stop offset="100%" stop-color="#5f6c48" />
+    </radialGradient>
+    <filter id="waxTexture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3" />
+    </filter>
+    <g id="waxSeal">
+      <circle cx="100" cy="100" r="92" fill="url(#waxGrad)" filter="url(#waxTexture)" />
+      <circle cx="100" cy="100" r="92" fill="url(#waxGrad)" opacity=".86" />
+      <circle cx="100" cy="100" r="78" fill="none" stroke="#525e3c" stroke-width="2" opacity=".5" />
+      <circle cx="100" cy="100" r="72" fill="none" stroke="#dfe7cb" stroke-width="1" opacity=".35" />
+      <text x="100" y="118" text-anchor="middle" font-family="'Playfair Display',serif" font-size="58" fill="#495434" opacity=".9" letter-spacing="2">K&#183;D</text>
+      <path d="M62 132 Q100 148 138 132" fill="none" stroke="#495434" stroke-width="2" opacity=".45" />
+      <path d="M62 70 Q100 54 138 70" fill="none" stroke="#495434" stroke-width="2" opacity=".45" />
+    </g>
 
-  <div class="stage-glow" aria-hidden="true"></div>
+    <!-- listić za ornament -->
+    <g id="leafPair">
+      <ellipse cx="4" cy="-3" rx="7.5" ry="2.7" transform="rotate(22 4 -3)" />
+      <ellipse cx="4" cy="3" rx="7.5" ry="2.7" transform="rotate(-22 4 3)" />
+    </g>
+    <!-- ornament: listići + srce -->
+    <g id="ornament">
+      <g fill="#9aab80">
+        <use href="#leafPair" transform="translate(44 12) scale(.72)" />
+        <use href="#leafPair" transform="translate(62 12) scale(.86)" />
+        <use href="#leafPair" transform="translate(80 12)" />
+        <use href="#leafPair" transform="translate(156 12) rotate(180) scale(.72)" />
+        <use href="#leafPair" transform="translate(138 12) rotate(180) scale(.86)" />
+        <use href="#leafPair" transform="translate(120 12) rotate(180)" />
+      </g>
+      <path d="M100 6.5c-1.9-3.6-7.6-3.3-7.6 1.6 0 4.3 7.6 9.4 7.6 9.4s7.6-5.1 7.6-9.4c0-4.9-5.7-5.2-7.6-1.6z" fill="#8c9c6e" />
+    </g>
+
+    <!-- ikone rasporeda (viewBox 0 0 48 48) -->
+    <g id="flute">
+      <path d="M-5 0 L5 0 L1.8 12 Q0 13.8 -1.8 12 Z" />
+      <path d="M0 13.6 V23.5" />
+      <path d="M-4.4 24 H4.4" />
+    </g>
+    <g id="icoCheers" fill="none" stroke="#7f8f63" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <use href="#flute" transform="translate(17 11) rotate(13)" />
+      <use href="#flute" transform="translate(31 11) rotate(-13)" />
+    </g>
+    <g id="icoCar" fill="none" stroke="#7f8f63" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10.5 27.5 13 20a4 4 0 0 1 3.8-2.7h14.4A4 4 0 0 1 35 20l2.5 7.5" />
+      <rect x="8.5" y="27" width="31" height="7.5" rx="2.6" />
+      <circle cx="15.5" cy="35" r="2.6" /><circle cx="32.5" cy="35" r="2.6" />
+      <path d="M17 22.6h14" />
+    </g>
+    <g id="icoChurch" fill="none" stroke="#7f8f63" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 6v7.5M20.6 9.4h6.8" />
+      <path d="M24 14.5 33 22v18H15V22l9-7.5Z" />
+      <path d="M15 24.5 9 28.5V40h6M33 24.5l6 4V40h-6" />
+      <path d="M21 40v-6.5a3 3 0 0 1 6 0V40" />
+    </g>
+    <g id="icoDinner" fill="none" stroke="#7f8f63" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="24" r="10" /><circle cx="24" cy="24" r="6" />
+      <path d="M9.5 10v7.5a3.2 3.2 0 0 0 6.4 0V10M12.7 17.5V38" />
+      <path d="M37.5 10c-2.6 2-3.8 4.6-3.8 7.6 0 2.2 1.1 3.6 2.9 4.1M36.6 21.7V38" />
+    </g>
+  </defs>
+</svg>
+
+<!-- ============ OVITAK / POZIVNICA ============ -->
+<div class="envelope-stage" id="stage">
+  <div class="stage-deco stage-deco-1" aria-hidden="true"></div>
+  <div class="stage-deco stage-deco-2" aria-hidden="true"></div>
 
   <div class="envelope-wrap" id="envelopeWrap">
-    <p class="stage-kicker" id="stageKicker">Nešto lijepo vas čeka</p>
+    <p class="stage-kicker">Nešto lijepo vas čeka</p>
 
     <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Otvori pozivnicu">
-      <!-- karta koja izlazi iz kuverte -->
       <div class="letter" id="letter" aria-hidden="true">
         <div class="letter-inner">
-          <span class="letter-orn">&#10047;</span>
+          <svg class="letter-orn" viewBox="0 0 200 24" aria-hidden="true"><use href="#ornament" /></svg>
           <p class="letter-small">S radošću vas pozivamo</p>
-          <h2 class="letter-names">Dino <em>&amp;</em> Karla</h2>
-          <div class="letter-rule"><span></span>&#9670;<span></span></div>
-          <p class="letter-date">subota, 19. lipnja 2027.</p>
-          <p class="letter-place">Bajkovita šuma</p>
+          <h2 class="letter-names">Karla <em>&amp;</em> Dino</h2>
+          <p class="letter-date">petak, 18. lipnja 2027.</p>
+          <p class="letter-place">Kuršanec &#183; Bajkovita šuma</p>
         </div>
       </div>
 
@@ -43,16 +110,11 @@
       <div class="env-body" aria-hidden="true"></div>
       <div class="env-left" aria-hidden="true"></div>
       <div class="env-right" aria-hidden="true"></div>
-      <div class="env-flap" id="envFlap" aria-hidden="true"></div>
+      <div class="env-flap" aria-hidden="true"></div>
 
-      <!-- pečat od voska s monogramom D + K -->
-      <div class="wax" id="wax" aria-hidden="true">
-        <div class="wax-half wax-left">
-          <svg viewBox="0 0 200 200" class="wax-svg"><use href="#waxSeal" /></svg>
-        </div>
-        <div class="wax-half wax-right">
-          <svg viewBox="0 0 200 200" class="wax-svg"><use href="#waxSeal" /></svg>
-        </div>
+      <div class="wax" aria-hidden="true">
+        <div class="wax-half wax-left"><svg viewBox="0 0 200 200" class="wax-svg"><use href="#waxSeal" /></svg></div>
+        <div class="wax-half wax-right"><svg viewBox="0 0 200 200" class="wax-svg"><use href="#waxSeal" /></svg></div>
         <span class="wax-crack"></span>
       </div>
     </div>
@@ -72,42 +134,18 @@
   <div class="stage-sweep" id="stageSweep" aria-hidden="true"></div>
 </div>
 
-<!-- SVG definicija pečata (koristi se i u footeru) -->
-<svg width="0" height="0" aria-hidden="true" style="position:absolute">
-  <defs>
-    <radialGradient id="waxGrad" cx="35%" cy="28%" r="80%">
-      <stop offset="0%" stop-color="#c8443f" />
-      <stop offset="45%" stop-color="#9e2a27" />
-      <stop offset="100%" stop-color="#5e1412" />
-    </radialGradient>
-    <filter id="waxTexture">
-      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="n" />
-      <feDisplacementMap in="SourceGraphic" in2="n" scale="3" />
-    </filter>
-    <g id="waxSeal">
-      <circle cx="100" cy="100" r="92" fill="url(#waxGrad)" filter="url(#waxTexture)" />
-      <circle cx="100" cy="100" r="92" fill="url(#waxGrad)" opacity=".85" />
-      <circle cx="100" cy="100" r="78" fill="none" stroke="#4d100f" stroke-width="2" opacity=".55" />
-      <circle cx="100" cy="100" r="72" fill="none" stroke="#e9928d" stroke-width="1" opacity=".35" />
-      <text x="100" y="118" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="62" fill="#4a0f0e" opacity=".85" letter-spacing="2">D&#183;K</text>
-      <path d="M62 132 Q100 148 138 132" fill="none" stroke="#4a0f0e" stroke-width="2" opacity=".5" />
-      <path d="M62 70 Q100 54 138 70" fill="none" stroke="#4a0f0e" stroke-width="2" opacity=".5" />
-    </g>
-  </defs>
-</svg>
-
 <!-- ============ GLAVNA STRANICA ============ -->
 <div class="site" id="site">
-
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="deco deco-left" aria-hidden="true"></div>
+  <div class="deco deco-right" aria-hidden="true"></div>
 
   <header class="nav" id="nav">
-    <a href="#pocetak" class="nav-mono" aria-label="Početak">D<span>&amp;</span>K</a>
     <nav class="nav-links" id="navLinks">
-      <a href="#pocetak">Početak</a>
-      <a href="#odbrojavanje">Odbrojavanje</a>
+      <a href="#pocetna">Početna</a>
+      <a href="#prica">Naša priča</a>
       <a href="#raspored">Raspored</a>
-      <a href="#lokacija" class="nav-cta">Lokacija</a>
+      <a href="#lokacije">Lokacije</a>
+      <a href="#rsvp">RSVP</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Izbornik" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -115,144 +153,166 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero" id="pocetak">
-    <div class="hero-sky" aria-hidden="true"></div>
-    <canvas class="fireflies" id="fireflies-hero" aria-hidden="true"></canvas>
+  <section class="hero" id="pocetna">
+    <figure class="hero-photo reveal">
+      <img src="assets/img/par.jpg" alt="Karla i Dino pod cvjetnim lukom" width="940" height="1032" />
+    </figure>
 
-    <div class="forest" aria-hidden="true">
-      <div class="layer layer-1" data-depth="0.08"></div>
-      <div class="layer layer-2" data-depth="0.16"></div>
-      <div class="layer layer-3" data-depth="0.26"></div>
-      <div class="layer layer-4" data-depth="0.40"></div>
-      <div class="mist mist-1"></div>
-      <div class="mist mist-2"></div>
-    </div>
-
-    <div class="hero-content">
-      <p class="hero-kicker reveal-up">Vjenčanje &#8212; Bajkovita šuma</p>
-      <h1 class="hero-names">
-        <span class="hero-name" data-split>Dino</span>
-        <span class="hero-amp">&amp;</span>
-        <span class="hero-name" data-split>Karla</span>
-      </h1>
-      <div class="hero-rule reveal-up"><span></span>&#10047;<span></span></div>
-      <p class="hero-date reveal-up">subota &#183; 19. lipnja 2027. &#183; 16:00</p>
-      <a href="#raspored" class="btn btn-ghost reveal-up">Pogledajte detalje dana</a>
-    </div>
-
-    <a href="#odbrojavanje" class="scroll-hint" aria-label="Kreni dalje">
-      <span class="scroll-hint-line"></span>
-      <span class="scroll-hint-text">listajte</span>
-    </a>
-  </section>
-
-  <!-- ODBROJAVANJE -->
-  <section class="countdown-sec" id="odbrojavanje">
-    <div class="wrap narrow center">
-      <p class="eyebrow reveal-up">Još samo</p>
-      <div class="countdown" id="countdown" aria-live="polite">
-        <div class="cd-unit reveal-up"><span class="cd-num" id="cdDays">000</span><span class="cd-lbl">dana</span></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-unit reveal-up"><span class="cd-num" id="cdHours">00</span><span class="cd-lbl">sati</span></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-unit reveal-up"><span class="cd-num" id="cdMins">00</span><span class="cd-lbl">minuta</span></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-unit reveal-up"><span class="cd-num" id="cdSecs">00</span><span class="cd-lbl">sekundi</span></div>
-      </div>
-      <p class="countdown-note reveal-up" id="cdNote">do trenutka kad kažemo &bdquo;da&ldquo;</p>
+    <div class="hero-text" id="prica">
+      <h1 class="hero-names reveal">Karla <span class="amp">&amp;</span> Dino</h1>
+      <p class="hero-date reveal">18. 06. 2027. <span class="bar">|</span> Petak</p>
+      <svg class="orn reveal" viewBox="0 0 200 24" aria-hidden="true"><use href="#ornament" /></svg>
+      <p class="hero-lead reveal">
+        Nakon dugih 15 godina od našeg prvog susreta, konačno je došlo vreme da se oženimo.
+        Ako ste dobili ovu pozivnicu, znači da ste odigrali veliku ulogu v našim životima.
+        Neki od vas trenutno, neki od vas v prošlim razdobljima života, ali svi ste nas
+        formirali v ljude kakvi smo danas. Zato nam je posebno drago da vas moremo pozvati
+        da svojim dolaskom uveličate naš veliki dan. Veselimo se svemu kaj dolazi, a još
+        više tome da ga podijelimo s vama.
+      </p>
     </div>
   </section>
 
-  <!-- RASPORED -->
-  <section class="schedule" id="raspored">
+  <!-- NAŠ DAN -->
+  <section class="day" id="raspored">
     <div class="wrap">
-      <header class="sec-head">
-        <p class="eyebrow reveal-up">Veliki dan</p>
-        <h2 class="sec-title reveal-up">Raspored</h2>
-        <div class="sec-rule reveal-up"><span></span>&#9670;<span></span></div>
-      </header>
+      <h2 class="sec-title reveal">Naš dan</h2>
+      <svg class="orn reveal" viewBox="0 0 200 24" aria-hidden="true"><use href="#ornament" /></svg>
 
-      <div class="sched-grid">
-        <article class="sched-card reveal-up">
-          <div class="sched-ico">&#9992;</div><span class="sched-time">15:30</span>
-          <h3>Dolazak gostiju</h3><p>Dobrodošlica uz pjenušac i lagani šumski aperitiv.</p>
-        </article>
-        <article class="sched-card reveal-up">
-          <div class="sched-ico">&#128141;</div><span class="sched-time">16:00</span>
-          <h3>Ceremonija</h3><p>Vjenčanje pod krošnjama, na čistini Bajkovite šume.</p>
-        </article>
-        <article class="sched-card reveal-up">
-          <div class="sched-ico">&#127870;</div><span class="sched-time">17:00</span>
-          <h3>Čestitke i koktel</h3><p>Zagrljaji, fotografije i zalazak sunca među stablima.</p>
-        </article>
-        <article class="sched-card reveal-up">
-          <div class="sched-ico">&#127860;</div><span class="sched-time">19:00</span>
-          <h3>Večera</h3><p>Svečana večera u šatoru okićenom svjetlima i zelenilom.</p>
-        </article>
-        <article class="sched-card reveal-up">
-          <div class="sched-ico">&#127925;</div><span class="sched-time">21:00</span>
-          <h3>Prvi ples</h3><p>Naša pjesma, a odmah zatim &#8212; svi na podij.</p>
-        </article>
-        <article class="sched-card reveal-up">
-          <div class="sched-ico">&#10024;</div><span class="sched-time">23:30</span>
-          <h3>Torta i vatromet</h3><p>Slatki dio večeri pod zvijezdama, pa slavlje do jutra.</p>
-        </article>
-      </div>
+      <ol class="tl">
+        <li class="tl-item reveal">
+          <span class="tl-ico"><svg viewBox="0 0 48 48"><use href="#icoCheers" /></svg></span>
+          <span class="tl-time">13:30</span>
+          <span class="tl-txt">Početak okupljanja<br />kod Dinija</span>
+        </li>
+        <li class="tl-item reveal">
+          <span class="tl-ico"><svg viewBox="0 0 48 48"><use href="#icoCheers" /></svg></span>
+          <span class="tl-time">14:30</span>
+          <span class="tl-txt">Početak okupljanja<br />kod Karle</span>
+        </li>
+        <li class="tl-item reveal">
+          <span class="tl-ico"><svg viewBox="0 0 48 48"><use href="#icoCar" /></svg></span>
+          <span class="tl-time">15:30</span>
+          <span class="tl-txt">Dino dolazi<br />po Karlu</span>
+        </li>
+        <li class="tl-item reveal">
+          <span class="tl-ico"><svg viewBox="0 0 48 48"><use href="#icoChurch" /></svg></span>
+          <span class="tl-time">16:30</span>
+          <span class="tl-txt">Ceremonija u<br />Kapeli Gospe Snježne,<br />Kuršanec</span>
+        </li>
+        <li class="tl-item reveal">
+          <span class="tl-ico"><svg viewBox="0 0 48 48"><use href="#icoCheers" /></svg></span>
+          <span class="tl-time">19:00</span>
+          <span class="tl-txt">Dolazak u<br />Bajkovitu šumu</span>
+        </li>
+        <li class="tl-item reveal">
+          <span class="tl-ico"><svg viewBox="0 0 48 48"><use href="#icoDinner" /></svg></span>
+          <span class="tl-time">20:30</span>
+          <span class="tl-txt">Večera</span>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <!-- CITAT -->
-  <section class="quote-sec">
-    <div class="wrap narrow center">
-      <p class="quote reveal-up">&bdquo;U šumi u kojoj se svaka staza račva, mi smo odabrali istu.&ldquo;</p>
-      <p class="quote-sig reveal-up">Dino &amp; Karla</p>
-    </div>
-  </section>
-
-  <!-- LOKACIJA -->
-  <section class="venue" id="lokacija">
+  <!-- LOKACIJE -->
+  <section class="places" id="lokacije">
     <div class="wrap">
-      <header class="sec-head">
-        <p class="eyebrow reveal-up">Gdje</p>
-        <h2 class="sec-title reveal-up">Bajkovita šuma</h2>
-        <div class="sec-rule reveal-up"><span></span>&#9670;<span></span></div>
-      </header>
+      <h2 class="sec-title reveal">Lokacije</h2>
+      <svg class="orn reveal" viewBox="0 0 200 24" aria-hidden="true"><use href="#ornament" /></svg>
 
-      <div class="venue-grid">
-        <div class="venue-art reveal-up" aria-hidden="true">
-          <div class="va-sky"></div>
-          <div class="va-sun"></div>
-          <div class="va-trees"></div>
-          <div class="va-ground"></div>
-          <div class="va-arch"><span></span></div>
-        </div>
-        <div class="venue-info reveal-up">
-          <p class="venue-lead">Ceremonija i slavlje održavaju se na istom mjestu &#8212; na šumskoj čistini okruženoj stoljetnim stablima i svjetlima koja se pale kad padne sumrak.</p>
-          <dl class="venue-dl">
-            <div><dt>Datum</dt><dd>subota, 19. lipnja 2027.</dd></div>
-            <div><dt>Ceremonija</dt><dd>16:00 &#183; šumska čistina</dd></div>
-            <div><dt>Slavlje</dt><dd>od 17:00 &#183; šator uz čistinu</dd></div>
-            <div><dt>Parking</dt><dd>osiguran uz glavni prilaz, 3 min hoda</dd></div>
-          </dl>
-          <div class="venue-actions">
-            <a class="btn btn-solid" href="https://www.google.com/maps/search/?api=1&amp;query=Bajkovita+%C5%A1uma" target="_blank" rel="noopener">Otvori u kartama</a>
-            <button class="btn btn-ghost" type="button" id="icsBtn">Dodaj u kalendar</button>
+      <div class="place-grid">
+        <article class="place reveal">
+          <figure class="place-photo">
+            <img src="assets/img/kapela.jpg" alt="Kapela Gospe Snježne u Kuršancu" width="856" height="546" loading="lazy" />
+          </figure>
+          <div class="place-body">
+            <h3>Kapela Gospe Snježne</h3>
+            <p class="place-sub">Kuršanec</p>
+            <span class="place-heart" aria-hidden="true">&#9825;</span>
+            <p class="place-txt">Sakrament vjenčanja sklopit ćemo u Kapeli Gospe Snježne u Kuršancu, okruženi našim najdražima.</p>
+            <a class="place-link" href="https://www.google.com/maps/search/?api=1&amp;query=Kapela+Gospe+Snje%C5%BEne+Kur%C5%A1anec" target="_blank" rel="noopener">Otvori u kartama</a>
           </div>
-          <p class="venue-tip">Savjet: staze su prirodne i mekane &#8212; preporučujemo obuću stabilnije pete.</p>
-        </div>
+        </article>
+
+        <article class="place reveal">
+          <div class="place-collage">
+            <figure><img src="assets/img/suma-sumrak.jpg" alt="Svečano postavljeni stolovi u sumrak" width="866" height="286" loading="lazy" /></figure>
+            <figure><img src="assets/img/suma-stol.jpg" alt="Detalj svečanog stola" width="358" height="254" loading="lazy" /></figure>
+            <figure><img src="assets/img/suma-objekt.jpg" alt="Prostor Bajkovite šume" width="504" height="254" loading="lazy" /></figure>
+          </div>
+          <div class="place-body">
+            <h3>Bajkovita šuma</h3>
+            <p class="place-sub">Svečana večera i slavlje</p>
+            <span class="place-heart" aria-hidden="true">&#9825;</span>
+            <p class="place-txt">Nakon ceremonije, nastavljamo slavlje u Bajkovitoj šumi uz večeru, glazbu i dobro društvo.</p>
+            <a class="place-link" href="https://www.google.com/maps/search/?api=1&amp;query=Bajkovita+%C5%A1uma" target="_blank" rel="noopener">Otvori u kartama</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="foot">
-    <div class="wrap center">
-      <div class="foot-seal"><svg viewBox="0 0 200 200"><use href="#waxSeal" /></svg></div>
-      <p class="foot-names">Dino <span>&amp;</span> Karla</p>
-      <p class="foot-date">19. 06. 2027. &#183; Bajkovita šuma</p>
-      <p class="foot-thanks">Hvala vam što ćete taj dan provesti s nama.</p>
-      <a class="foot-top" href="#pocetak">&#8593; na vrh</a>
+  <!-- RSVP -->
+  <section class="rsvp" id="rsvp">
+    <div class="wrap narrow">
+      <h2 class="sec-title reveal">RSVP</h2>
+      <svg class="orn reveal" viewBox="0 0 200 24" aria-hidden="true"><use href="#ornament" /></svg>
+      <p class="rsvp-lead reveal">Molimo vas da svoj dolazak potvrdite do 15. 05. 2027.</p>
+
+      <button class="btn reveal" id="rsvpOpen" type="button" aria-expanded="false" aria-controls="rsvpForm">
+        Potvrdi dolazak <span aria-hidden="true">&#8594;</span>
+      </button>
+
+      <form class="rsvp-form" id="rsvpForm" novalidate hidden>
+        <div class="field">
+          <input type="text" id="ime" name="ime" placeholder=" " required />
+          <label for="ime">Ime i prezime</label>
+          <span class="field-err">Molimo upišite ime i prezime.</span>
+        </div>
+        <div class="field">
+          <input type="email" id="email" name="email" placeholder=" " required />
+          <label for="email">E-mail</label>
+          <span class="field-err">Molimo upišite ispravnu e-mail adresu.</span>
+        </div>
+        <fieldset class="choice">
+          <legend>Hoćete li nam se pridružiti?</legend>
+          <label class="choice-opt"><input type="radio" name="dolazak" value="Dolazim" required /><span>Da, dolazim</span></label>
+          <label class="choice-opt"><input type="radio" name="dolazak" value="Ne mogu doći" /><span>Nažalost, ne mogu</span></label>
+          <span class="field-err">Odaberite jednu opciju.</span>
+        </fieldset>
+        <div class="field field-half">
+          <input type="number" id="osobe" name="osobe" min="1" max="10" value="1" placeholder=" " />
+          <label for="osobe">Broj osoba</label>
+        </div>
+        <div class="field field-half">
+          <select id="menu" name="menu">
+            <option value="Standardni">Standardni meni</option>
+            <option value="Vegetarijanski">Vegetarijanski</option>
+            <option value="Bezglutenski">Bezglutenski</option>
+          </select>
+          <label class="label-static" for="menu">Meni</label>
+        </div>
+        <div class="field">
+          <textarea id="poruka" name="poruka" rows="3" placeholder=" "></textarea>
+          <label for="poruka">Napomena (alergije, pjesma za DJ-a, poruka za nas...)</label>
+        </div>
+        <button class="btn btn-wide" type="submit">Pošalji potvrdu</button>
+        <p class="form-hint">Obrazac otvara vaš e-mail klijent s ispunjenom porukom.</p>
+      </form>
+
+      <div class="rsvp-done" id="rsvpDone" hidden>
+        <div class="done-seal"><svg viewBox="0 0 200 200"><use href="#waxSeal" /></svg></div>
+        <h3>Hvala vam!</h3>
+        <p id="rsvpDoneMsg">Vaša potvrda je spremna.</p>
+        <button class="link-btn" type="button" id="rsvpAgain">Pošalji još jednu potvrdu</button>
+      </div>
     </div>
+  </section>
+
+  <footer class="foot">
+    <p class="foot-names">Karla <span class="amp">&amp;</span> Dino</p>
+    <svg class="orn" viewBox="0 0 200 24" aria-hidden="true"><use href="#ornament" /></svg>
+    <p class="foot-date">18. 06. 2027.</p>
   </footer>
 </div>
 
