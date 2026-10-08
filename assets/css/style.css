@@ -329,12 +329,13 @@ section{position:relative;z-index:2}
 .place-photo{margin:0;overflow:hidden;aspect-ratio:16/10.4;min-height:0;flex:none}
 .place-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .9s var(--ease-out)}
 .place:hover .place-photo img{transform:scale(1.04)}
+/* raspored kao u izvornom kolažu: visoka fotografija lijevo, dvije desno */
 .place-collage{
-  display:grid;grid-template-columns:4fr 5fr;grid-template-rows:1.12fr 1fr;gap:6px;
+  display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6px;
   background:var(--paper);aspect-ratio:16/10.4;min-height:0;flex:none;
 }
 .place-collage figure{margin:0;overflow:hidden;min-height:0;min-width:0}
-.place-collage figure:first-child{grid-column:1/-1}
+.place-collage .col-tall{grid-row:1/3}
 .place-collage img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease-out)}
 .place:hover .place-collage img{transform:scale(1.04)}
 .place-body{padding:clamp(20px,2.6vw,30px) clamp(18px,2.6vw,34px) clamp(26px,3vw,34px);text-align:center}

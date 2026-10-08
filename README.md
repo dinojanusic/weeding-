@@ -34,17 +34,18 @@ tools/generiraj-cvijece.py   — generator tih grančica
 
 ## Fotografije
 
-`par.jpg` i `kapela.jpg` su **originali** (hero je izrezan na omjer okvira, 1064 × 1350).
+Sve su fotografije originali:
 
-Tri fotografije u kolažu Bajkovite šume (`suma-sumrak.jpg`, `suma-stol.jpg`, `suma-objekt.jpg`)
-još su izrezane iz slike dizajna pa su niske rezolucije. Zamijenite ih originalima pod istim
-imenima i ništa drugo ne treba mijenjati:
-
-| Datoteka | Gdje se vidi | Preporučena veličina |
+| Datoteka | Gdje se vidi | Izvor |
 | --- | --- | --- |
-| `suma-sumrak.jpg` | veliki kadar u kolažu | ≥ 1600 × 530 px |
-| `suma-stol.jpg` | lijevi mali kadar | ≥ 700 × 500 px |
-| `suma-objekt.jpg` | desni mali kadar | ≥ 1000 × 500 px |
+| `par.jpg` | hero | original, izrezan na omjer okvira (1064 × 1350) |
+| `kapela.jpg` | kartica kapele | original (961 × 682) |
+| `suma-sumrak.jpg` | visoka fotografija u kolažu | izrezano iz kolaža po bijelim razdjelnicama |
+| `suma-stol.jpg` | gornja desna u kolažu | isto |
+| `suma-objekt.jpg` | donja desna u kolažu | isto |
+
+Kolaž Bajkovite šume zadržava raspored izvornika — visoka fotografija lijevo, dvije složene
+desno. Zamijene li se slike, dovoljno je zadržati ista imena; kadriranje rješava `object-fit`.
 
 ## Što još prilagoditi prije objave
 
