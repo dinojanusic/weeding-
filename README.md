@@ -32,16 +32,16 @@ assets/img/cvijece-*.svg     — grančice šlajera (generirane)
 tools/generiraj-cvijece.py   — generator tih grančica
 ```
 
-## ⚠️ Fotografije treba zamijeniti
+## Fotografije
 
-Fotografije u `assets/img/` izrezane su **iz slike dizajna koju ste poslali**, pa su niske
-rezolucije (otprilike 900 px široke) i služe samo kao privremeni ispun. Zamijenite ih
-originalima pod istim imenima i ništa drugo ne treba mijenjati:
+`par.jpg` i `kapela.jpg` su **originali** (hero je izrezan na omjer okvira, 1064 × 1350).
+
+Tri fotografije u kolažu Bajkovite šume (`suma-sumrak.jpg`, `suma-stol.jpg`, `suma-objekt.jpg`)
+još su izrezane iz slike dizajna pa su niske rezolucije. Zamijenite ih originalima pod istim
+imenima i ništa drugo ne treba mijenjati:
 
 | Datoteka | Gdje se vidi | Preporučena veličina |
 | --- | --- | --- |
-| `par.jpg` | hero | ≥ 1400 × 1600 px (uspravna) |
-| `kapela.jpg` | kartica kapele | ≥ 1600 × 1040 px |
 | `suma-sumrak.jpg` | veliki kadar u kolažu | ≥ 1600 × 530 px |
 | `suma-stol.jpg` | lijevi mali kadar | ≥ 700 × 500 px |
 | `suma-objekt.jpg` | desni mali kadar | ≥ 1000 × 500 px |
